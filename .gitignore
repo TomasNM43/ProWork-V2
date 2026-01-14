@@ -1,0 +1,73 @@
+# Archivos compilados
+target/
+*.class
+*.war
+*.ear
+*.jar
+
+# Maven
+.mvn/
+mvn.cmd
+mvnw
+mvnw.cmd
+dependency-reduced-pom.xml
+
+# IDE - IntelliJ IDEA
+.idea/
+*.iml
+*.iws
+*.ipr
+out/
+
+# IDE - Eclipse
+.settings/
+.project
+.classpath
+.metadata/
+bin/
+
+# IDE - VS Code
+.vscode/
+*.code-workspace
+
+# IDE - NetBeans
+nbproject/
+nbbuild/
+dist/
+nbdist/
+
+# Logs
+*.log
+logs/
+
+# Temporal
+*.tmp
+*.bak
+*.swp
+*~
+
+# Sistema operativo
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Configuración local
+application-local.properties
+application-dev.properties
+
+# Archivos de base de datos locales
+*.db
+*.sqlite
+
+# Node modules (si usas frontend)
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Archivos específicos del proyecto
+${user.home}/ProWork/documentos/
