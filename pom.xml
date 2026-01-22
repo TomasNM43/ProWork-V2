@@ -64,6 +64,13 @@
             <artifactId>spring-security-crypto</artifactId>
             <version>6.2.3</version>
         </dependency>
+
+        <!-- Commons Logging (requerido por Spring Security) -->
+        <dependency>
+            <groupId>commons-logging</groupId>
+            <artifactId>commons-logging</artifactId>
+            <version>1.2</version>
+        </dependency>
     </dependencies>
 
     <build>

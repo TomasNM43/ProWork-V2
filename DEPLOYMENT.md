@@ -80,7 +80,7 @@ mvn clean package
 ```bash
 mvn tomcat7:run
 ```
-La aplicación estará disponible en: `http://localhost:8080/ProWork`
+La aplicación estará disponible en: `http://localhost:8083/ProWork`
 
 #### Opción B: Desplegar en Tomcat Instalado (Producción)
 ```bash
@@ -91,7 +91,7 @@ copy target\ProWork.war C:\apache-tomcat-9.0\webapps\
 cd C:\apache-tomcat-9.0\bin
 startup.bat
 ```
-La aplicación estará disponible en: `http://localhost:8080/ProWork`
+La aplicación estará disponible en: `http://localhost:8083/ProWork`
 
 ---
 
@@ -106,16 +106,16 @@ Si necesitas que la aplicación esté disponible en el puerto 80 (HTTP) o 443 (H
 ### Paso 2: Instalar Application Request Routing (ARR)
 1. Descargar: https://www.iis.net/downloads/microsoft/application-request-routing
 2. Instalar el módulo
-3. Abrir IIS Manager
-4. Hacer clic en el servidor → Application Request Routing Cache
-5. Server Proxy Settings → Habilitar proxy
+3. Abrir **Administrador de IIS** (IIS Manager)
+4. Hacer clic en el **nombre del servidor** (nodo raíz) → **Enrutamiento de solicitud de aplicación** (Application Request Routing Cache)
+5. **Configuración del servidor proxy** (Server Proxy Settings) → Marcar **"Habilitar proxy"** → Aplicar
 
 ### Paso 3: Crear Sitio en IIS
-1. Abrir IIS Manager
-2. Sites → Add Website
-   - **Site name:** ProWork
-   - **Physical path:** C:\inetpub\ProWork-V2
-   - **Port:** 80 (o el que desees)
+1. Abrir **Administrador de IIS** (IIS Manager)
+2. **Sitios** (Sites) → Clic derecho → **Agregar sitio web** (Add Website)
+   - **Nombre del sitio:** ProWork
+   - **Ruta de acceso física:** C:\Users\user\Documents\Proyectos\Ginnet\ProWork-V2
+   - **Puerto:** 10003 (o el que desees)
 
 ### Paso 4: Configurar URL Rewrite
 Crear archivo `web.config` en la raíz del proyecto:
@@ -128,7 +128,7 @@ Crear archivo `web.config` en la raíz del proyecto:
             <rules>
                 <rule name="ReverseProxyInboundRule" stopProcessing="true">
                     <match url="(.*)" />
-                    <action type="Rewrite" url="http://localhost:8080/ProWork/{R:1}" />
+                    <action type="Rewrite" url="http://localhost:8083/ProWork/{R:1}" />
                 </rule>
             </rules>
         </rewrite>
@@ -146,8 +146,8 @@ startup.bat
 ```
 
 Ahora la aplicación estará disponible en:
-- **Directo (Tomcat):** http://localhost:8080/ProWork
-- **A través de IIS:** http://localhost o http://tu-dominio.com
+- **Directo (Tomcat):** http://localhost:8083/ProWork
+- **A través de IIS:** http://localhost:10003/ o http://tu-dominio.com:10003
 
 ---
 
@@ -206,10 +206,10 @@ VALUES ('Admin', 'Sistema', 'admin@prowork.com', 'admin123', 'ADMINISTRADOR', tr
 - Verificar que ARR Proxy esté habilitado
 - Revisar logs de IIS: Event Viewer → Windows Logs → Application
 
-### Puerto 8080 ya está en uso
+### Puerto 8083 ya está en uso
 Editar `C:\apache-tomcat-9.0\conf\server.xml` y cambiar el puerto:
 ```xml
-<Connector port="8081" protocol="HTTP/1.1"
+<Connector port="8084" protocol="HTTP/1.1"
            connectionTimeout="20000"
            redirectPort="8443" />
 ```
